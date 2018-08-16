@@ -1,0 +1,35 @@
+<div class="banner">
+  <div class="banner-content">
+    <h1>The AI powered Mixologist<span class="sup">®</span></h1>
+    <p>
+      <span id="banner-typed-text"></span>
+    </p>
+    <%= link_to "Start", 'cocktail/mixologist', class: " btn btn-banner" %>
+  </div>
+</div>
+
+<div class="navbar-t navbar-wagon">
+  <!-- Logo -->
+  <%= link_to root_path, class: "navbar-wagon-brand" do %>
+  <%= image_tag "logo.png" %>
+  <% end %>
+
+  <!-- Right Navigation -->
+  <div class="navbar-wagon-right hidden-xs hidden-sm">
+
+    <!-- Links -->
+    <%= link_to "Home", root_path, class: "navbar-wagon-item navbar-wagon-link" %>
+    <%= link_to "New Cocktail", new_cocktail_path, class: " btn btn-yours" %>
+  </div>
+
+  <!-- Dropdown list appearing on mobile only -->
+  <div class="navbar-wagon-item hidden-md hidden-lg">
+    <div class="dropdown">
+      <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
+      <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+        <li><%= link_to "Home", root_path, class: "navbar-wagon-item navbar-wagon-link" %></li>
+        <li><%= link_to "New Cocktail", new_cocktail_path, class: " btn btn-yours" %></li>
+      </ul>
+    </div>
+  </div>
+</div>

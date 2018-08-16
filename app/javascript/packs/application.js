@@ -8,5 +8,12 @@
 // layout file, like app/views/layouts/application.html.erb
 import 'bootstrap';
 
+import { initUpdateNavbarOnScroll } from '../components/navbar';
+
+initUpdateNavbarOnScroll();
+
+import { loadDynamicBannerText } from '../components/banner';
+
+loadDynamicBannerText();
 
 console.log('Hello World from Webpacker')

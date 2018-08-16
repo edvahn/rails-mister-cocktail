@@ -1,0 +1,25 @@
+<% content_for(:banner) do %>
+<%= render 'shared/banner' %>
+<% end %>
+
+<div id="content-under" class="container">
+  <div class="row">
+    <% @cocktails.each do |c| %>
+    <div class="col-xs-12 col-sm-4">
+      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://mixology.eu/wp-content/uploads/2018/04/EN_Non_Alcoholic_Drink_Mocktail-pixabay.jpg');">
+          <div class="card-description">
+            <h2><%= link_to c.name, cocktail_path(c) %></h2>
+          </div>
+          <%= link_to "", cocktail_path(c), class: "card-link"  %>
+        <div class="card-footer">
+          <div class="card-date">
+            <% doses = Dose.where(cocktail_id: c.id)  %>
+            <p><%= doses.count %> Ingredients </p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
