@@ -12,7 +12,7 @@ require 'cloudinary'
 
 puts "Let's seed!"
 puts 'cleaning the DB'
-Dose.destroy_all
+
 Ingredient.destroy_all
 Cocktail.destroy_all
 puts 'DB cleaned'
@@ -26,18 +26,15 @@ ingredient_range = []
 ingredients["drinks"].each do |b|
   ingredient = Ingredient.new(name: b["strIngredient1"])
   ingredient.save!
-  ingredient_range << ingredient.id
+
 end
 
-10.times do
   images = ["http://res.cloudinary.com/doyl8dhkb/image/upload/v1511609816/lnuzy1rwse9r5thrc3st.jpg", "http://res.cloudinary.com/doyl8dhkb/image/upload/v1511609817/trbukchn4li4g5g6ibay.jpg", "http://res.cloudinary.com/doyl8dhkb/image/upload/v1511609818/rahtw0ahy5zrbyv9krk8.jpg", "http://res.cloudinary.com/doyl8dhkb/image/upload/v1511609819/h721tvfska6obubiunns.jpg"]
-  @cocktail = Cocktail.new(name: Faker::Hipster.words(2).join(" ").capitalize)
-  @cocktail.remote_photo_url = images.sample
-  @cocktail.save!
-  [3, 4, 5, 6].sample.times do
     desc = ["1cl", "1.5cl", "2cl", "2.5cl", "3cl", "3.5cl", "4cl", "4.5cl", "5cl", "5.5cl", "6cl", "1 drop", "2 drops"]
-    @dose = Dose.new(description: desc.sample, ingredient_id: ingredient_range.sample)
-    @dose.cocktail = @cocktail
-    @dose.save
-  end
+10.times do
+  cocktail = Cocktail.new(name: Faker::Hipster.words(2).join(" ").capitalize)
+  cocktail.remote_photo_url = images.sample
+  cocktail.save!
+   Dose.create!(description: desc.sample, ingredient: Ingredient.all.sample, cocktail: cocktail)
+
 end

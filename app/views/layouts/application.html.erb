@@ -15,12 +15,13 @@
   <body>
     <% if content_for?(:banner) %>
       <%= yield(:banner) %>
+      <%= yield %>
+      <%= render 'shared/footer' %>
     <% else %>
       <%= render 'shared/navbar' %>
+      <%= yield %>
+      <%= render 'shared/footer' %>
     <% end %>
-
-    <%= yield %>
-    <%= render 'shared/footer' %>
     <%= javascript_include_tag "application" %>
     <%= javascript_pack_tag "application" %>
   </body>

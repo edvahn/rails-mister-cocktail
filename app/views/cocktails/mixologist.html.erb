@@ -1,21 +1,21 @@
-<div id="content-under" class="container">
+<div class="container">
+  <h1> The Mixologist's creation</h1>
   <div class="row">
     <div class="col-xs-12">
       <div class="card cocktail-card">
-        <h3 class="cocktail-title"><%= @cocktail.name %></h3>
-        <%= cl_image_tag @cocktail.photo, height: 300, width: 400, crop: :fill %>
+        <h3 class="cocktail-title">Your cocktail is the <%= @cocktail.name %></h3>
         <%= link_to 'Edit cocktail', edit_cocktail_path(@cocktail), class: "btn btn-yours btn-top-right" %>
         <%= link_to 'Add dose', new_cocktail_dose_path(@cocktail), class: "btn btn-yours btn-top-right-two" %>
         <h4 class="cocktail-title"> Doses </h4>
         <% doses = Dose.where(cocktail_id: @cocktail.id)  %>
         <ul class="cocktail-title doses-list">
           <% doses.each do |d| %>
-            <li> <%= d.description %> of <%= d.ingredient.name %> <%= link_to '<i class="fa fa-trash-o" aria-hidden="true"></i>'.html_safe, dose_path(d), method: :delete, data: { confirm: "Are you sure?" }%></li>
+            <li> <%= d.description %> de <%= d.ingredient.name %> <%= link_to '<i class="fa fa-trash-o" aria-hidden="true"></i>'.html_safe, dose_path(d), method: :delete, data: { confirm: "Are you sure?" }%></li>
           <% end %>
-
         </ul>
       </div>
     </div>
   </div>
   <%#= button_to 'Add review', new_cocktail_review_path(@cocktail), :method => "get", class: "btn btn-primary" %>
 </div>
+
